@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package robin.v1;
+
+import "proto/v1/common/utils.proto";
+
+message SubscriptionRequest {
+  string user_id = 1;
+  string plan_id = 2;
+}
+
+message SubscriptionResponse {
+  string subscription_id = 1;
+  string status = 2;
+}
+
+service RobinService {
+  rpc CreateSubscription(SubscriptionRequest) returns (SubscriptionResponse);
+  rpc CancelSubscription(SubscriptionRequest) returns (SubscriptionResponse);
+}
